@@ -3,11 +3,12 @@ package Ex5;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import spark.Spark;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static spark.Spark.get;
+import static spark.Spark.*;
 
 public class Main {
     static LoadingCache<Integer, String> primeCache = CacheBuilder.newBuilder()
@@ -43,6 +44,5 @@ public class Main {
             int value = Integer.parseInt(req.queryParams("n"));
             return primeCache.get(value);
         });
-
     }
 }
